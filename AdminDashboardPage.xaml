@@ -1,0 +1,99 @@
+﻿<Window x:Class="SalesManager.AdminDashboardPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SalesManager"
+        mc:Ignorable="d"
+        d:DesignHeight="450" d:DesignWidth="800"
+          Title="AdminDashboardPage"  Height="450" Width="800" >
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="20,18,0,0" TextWrapping="Wrap" Text="Mã NV" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="txtMaNv" IsReadOnly="True" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="10,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="147"/>
+
+        <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Margin="10,18,0,0" TextWrapping="Wrap" Text="Giới Tính" VerticalAlignment="Top" FontSize="16"/>
+        <StackPanel Orientation="Horizontal" Grid.Column="3" Margin="10,18,-10,22" Grid.RowSpan="2">
+            <RadioButton x:Name="rbtnMale" Content="Male" GroupName="Gender" Margin="5" />
+            <RadioButton x:Name="rbtnFemale" Content="Female" GroupName="Gender" Margin="5" />
+        </StackPanel>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="20,16,0,0" TextWrapping="Wrap" Text="Họ" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.584,0.149"/>
+        <TextBox x:Name="txtHo" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Center" Width="255" Margin="10,0,0,0"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Margin="20,0,0,4" TextWrapping="Wrap" Text="Tên" VerticalAlignment="Bottom" FontSize="16"/>
+        <TextBox x:Name="txtTen" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" Margin="10,9,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Điện thoại" VerticalAlignment="Top" FontSize="16" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="txtDienthoai" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" Margin="29,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="177"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" Margin="10,11,0,0" TextWrapping="Wrap" Text="Mã ĐN" VerticalAlignment="Top" FontSize="16" Grid.RowSpan="2"/>
+        <TextBox x:Name="txtMaDn" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Left" Margin="29,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" Grid.RowSpan="2"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" Margin="7,19,0,0" TextWrapping="Wrap" Text="Mật Khẩu" VerticalAlignment="Top" FontSize="16" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="txtMatKhau" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Left" Margin="29,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" Margin="7,56,0,0" TextWrapping="Wrap" Text="Trạng Thái" VerticalAlignment="Top" FontSize="16" Grid.ColumnSpan="2"/>
+        <ComboBox Name="cbTrangThai" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" Margin="103,56,0,0" VerticalAlignment="Top" Width="177" Grid.ColumnSpan="2"
+                  SelectedValuePath="Value" DisplayMemberPath="Text" ItemsSource="{Binding StatusOptions}" SelectedValue="{Binding SelectedStatus, Mode=TwoWay}"/>
+
+        <TextBlock Grid.Row="3" HorizontalAlignment="Center" Margin="0,6,0,0" TextWrapping="Wrap" Text="Địa chỉ" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="txtDiachi" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255"/>
+
+
+        <TextBlock Grid.Row="3" HorizontalAlignment="Left" Margin="20,52,0,0" TextWrapping="Wrap" Text="Date" VerticalAlignment="Top" FontSize="16"/>
+        <DatePicker Name="dpDate" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" Margin="10,52,0,0" Width="255"  VerticalAlignment="Top" Height="30" ></DatePicker>
+
+        <DataGrid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" x:Name="DgData" AutoGenerateColumns="False" Margin="20,113,20,10"  Loaded="DataGrid_Loaded" SelectionChanged="DgData_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="MãNV" Width="*" Binding="{Binding MaNv}"/>
+                <DataGridTextColumn Header="Tên" Width="*" Binding="{Binding FullName}"/>
+                <DataGridTextColumn Header="Giới Tính" Width="*" Binding="{Binding GenderDescription}"/>
+                <DataGridTextColumn Header="Date" Width="*" Binding="{Binding NgayNv}"/>
+                <DataGridTextColumn Header="Địa chỉ" Width="*" Binding="{Binding DiaChi}"/>
+                <DataGridTextColumn Header="Điện thoại" Width="*" Binding="{Binding DienThoai}"/>
+                <DataGridTextColumn Header="Mã Đăng Nhâp" Width="*" Binding="{Binding MaDn}"/>
+                <DataGridTextColumn Header="Mật Khẩu" Width="*" Binding="{Binding MatKhau}"/>
+                <DataGridComboBoxColumn Header="Trạng thái" Width="*" 
+                SelectedValueBinding="{Binding status}"
+                DisplayMemberPath="Text"
+                SelectedValuePath="Value">
+                    <DataGridComboBoxColumn.ElementStyle>
+                        <Style TargetType="ComboBox">
+                            <Setter Property="ItemsSource" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=DataContext.StatusOptions}"/>
+                        </Style>
+                    </DataGridComboBoxColumn.ElementStyle>
+                    <DataGridComboBoxColumn.EditingElementStyle>
+                        <Style TargetType="ComboBox">
+                            <Setter Property="ItemsSource" Value="{Binding RelativeSource={RelativeSource AncestorType=DataGrid}, Path=DataContext.StatusOptions}"/>
+                        </Style>
+                    </DataGridComboBoxColumn.EditingElementStyle>
+                </DataGridComboBoxColumn>
+                <!--<DataGridComboBoxColumn />-->
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+        <StackPanel Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Orientation="Horizontal" HorizontalAlignment="Left" Margin="52,5,0,5">
+            <Button Content="Thêm" Margin="0,0,10,0" Width="71" Click="Button1_Click"/>
+            <Button Content="Sửa" Margin="0,0,10,0" Width="71" Click="Button2_Click"/>
+            <Button Content="Hủy" Margin="0,0,10,0" Width="71" Click="Button3_Click"/>
+            <Button Content="Lưu" Margin="0,0,10,0" Width="71" Click="Button_Click"/>
+            <Button Content="Manager" Margin="0,0,10,0" Width="71" Click="Button4_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

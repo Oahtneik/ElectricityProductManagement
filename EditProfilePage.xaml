@@ -1,0 +1,75 @@
+﻿<Page x:Class="SalesManager.EditProfilePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SalesManager"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+        Title="EditProfilePage" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Page Title -->
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="Edit Profile" FontSize="24" FontWeight="Bold" Foreground="#2C3E50" HorizontalAlignment="Center" Margin="20"/>
+
+        <!-- Form Container -->
+        <Border Grid.Row="1" Grid.Column="1" Background="#F5F5F5" Padding="20" CornerRadius="10" BorderBrush="#2C3E50" BorderThickness="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="24.177" />
+                    <ColumnDefinition Width="40.933"/>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- ID -->
+                <Label Grid.Column="0" Content="ID:" VerticalAlignment="Center" Margin="5,0,5,0" Grid.ColumnSpan="2"/>
+                <TextBox Grid.Row="0" Grid.Column="2" Name="txtId" Width="200" Margin="5,5,5,5" IsReadOnly="True"/>
+
+                <!-- Name -->
+                <Label Grid.Row="1" Grid.Column="0" Content="Name:" VerticalAlignment="Center" Margin="5,0,5,0" Grid.ColumnSpan="2"/>
+                <TextBox Grid.Row="1" Grid.Column="2" Name="txtName" Width="200" Margin="5,5,5,5"/>
+
+                <!-- Date -->
+                <Label Grid.Row="2" Grid.Column="0" Content="Date:" VerticalAlignment="Center" Margin="5,0,5,0" Grid.ColumnSpan="2"/>
+                <DatePicker Grid.Row="2" Grid.Column="2" Name="dpDate" Width="200" Margin="5,5,5,5"/>
+
+                <!-- Gender -->
+                <Label Grid.Row="3" Grid.Column="0" Content="Gender:" VerticalAlignment="Center" Margin="5,0,5,0" Grid.ColumnSpan="2"/>
+                <StackPanel Grid.Row="3" Grid.Column="2" Orientation="Horizontal" Margin="5,5,5,5">
+                    <RadioButton x:Name="rbtnMale" Content="Male" GroupName="Gender" Margin="5" />
+                    <RadioButton x:Name="rbtnFemale" Content="Female" GroupName="Gender" Margin="5" />
+                </StackPanel>
+
+                <!-- Address -->
+                <Label Grid.Row="4" Grid.Column="0" Content="Address:" VerticalAlignment="Center" Margin="5,0,5,0" Grid.ColumnSpan="2"/>
+                <TextBox Grid.Row="4" Grid.Column="2" Name="txtAddress" Width="200" Margin="5,5,5,5"/>
+
+                <!-- Phone -->
+                <Label Grid.Row="5" Grid.Column="0" Content="Phone:" VerticalAlignment="Center" Margin="5,0,5,0" Grid.ColumnSpan="2"/>
+                <TextBox Grid.Row="5" Grid.Column="2" Name="txtPhone" Width="200" Margin="5,5,5,5"/>
+
+                <!-- Save Button -->
+                <Button Grid.Row="6" Grid.Column="2" Content="Save" Width="75" Margin="130,5,0,5" HorizontalAlignment="Left" Click="SaveButton_Click"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

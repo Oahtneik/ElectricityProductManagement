@@ -1,0 +1,72 @@
+﻿<Page x:Class="SalesManager.ListProduct"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:local="clr-namespace:SalesManager"
+      mc:Ignorable="d"
+      Title="ListProduct" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Product ID -->
+        <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="20,18,0,0" 
+                   TextWrapping="Wrap" Text="Mã SP" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="txtMaSp" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="10,18,0,0" 
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="147"/>
+
+        <!-- Product Name -->
+        <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Margin="10,18,0,0" 
+                   TextWrapping="Wrap" Text="Tên SP" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="txtTenSp" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" Margin="10,18,0,0" 
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="177"/>
+
+        <!-- Unit -->
+        <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Margin="20,18,0,0" 
+                   TextWrapping="Wrap" Text="Đơn vị tính" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="txtDonViTinh" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="10,18,0,0" 
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="147"/>
+
+        <!-- Price -->
+        <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Margin="10,18,0,0" 
+                   TextWrapping="Wrap" Text="Đơn giá" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox x:Name="txtDonGia" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" Margin="10,18,0,0" 
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="177"/>
+
+        <!-- Product Image Path -->
+        <TextBox x:Name="txtHinh" HorizontalAlignment="Left" VerticalAlignment="Top" Width="63" Height="16" Grid.Column="3" Margin="235,20,0,0"/>
+
+
+        <!-- Product DataGrid -->
+        <DataGrid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" x:Name="DgProductData" 
+                  AutoGenerateColumns="False" Margin="20,10,20,10" Loaded="DgProductData_Loaded" 
+                  SelectionChanged="DgProductData_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã SP" Width="*" Binding="{Binding MaSp}"/>
+                <DataGridTextColumn Header="Tên SP" Width="*" Binding="{Binding TenSp}"/>
+                <DataGridTextColumn Header="Đơn vị tính" Width="*" Binding="{Binding DonViTinh}"/>
+                <DataGridTextColumn Header="Đơn giá" Width="*" Binding="{Binding DonGia}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Action Buttons -->
+        <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Orientation="Horizontal" 
+                    HorizontalAlignment="Left" Margin="52,5,0,5">
+            <Button Content="Thêm" Margin="0,0,10,0" Width="71" Click="AddProduct_Click"/>
+            <Button Content="Sửa" Margin="0,0,10,0" Width="71" Click="EditProduct_Click"/>
+            <Button Content="Hủy" Margin="0,0,10,0" Width="71" Click="CancelProduct_Click"/>
+            <Button Content="Xóa" Margin="0,0,10,0" Width="71" Click="DeleteProduct_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,39 @@
+﻿<Page x:Class="SalesManager.CustomerListWindow"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SalesManager"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+         Title="CustomerListWindow" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="DgData" Loaded="DgData_Loaded" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="MãKH" Width="*" Binding="{Binding MaKh}"/>
+                <DataGridTextColumn Header="KHÁCH HÀNG" Width="*" Binding="{Binding TenCty}"/>
+                <DataGridTextColumn Header="ĐỊA CHỈ" Width="*" Binding="{Binding DiaChi}"/>
+                <DataGridTextColumn Header="ĐIỆN THOẠI" Width="*" Binding="{Binding DienThoai}"/>
+                <DataGridComboBoxColumn x:Name="colCity" Header="THÀNH PHỐ" Width="*" 
+                            SelectedValueBinding="{Binding MaThanhPho}"
+                            DisplayMemberPath="TenThanhPho"
+                            SelectedValuePath="MaThanhPho">
+                    <DataGridComboBoxColumn.ElementStyle>
+                        <Style TargetType="ComboBox">
+                            <Setter Property="ItemsSource" Value="{Binding Path=DataContext.ListOfCategory,
+                RelativeSource={RelativeSource FindAncestor,
+                AncestorType={x:Type DataGrid}}}"/>
+                        </Style>
+                    </DataGridComboBoxColumn.ElementStyle>
+                    <DataGridComboBoxColumn.EditingElementStyle>
+                        <Style TargetType="ComboBox">
+                            <Setter Property="ItemsSource" Value="{Binding Path=DataContext.ListOfCategory,
+   RelativeSource={RelativeSource FindAncestor,
+   AncestorType={x:Type DataGrid}}}"/>
+                        </Style>
+                    </DataGridComboBoxColumn.EditingElementStyle>
+                </DataGridComboBoxColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>
